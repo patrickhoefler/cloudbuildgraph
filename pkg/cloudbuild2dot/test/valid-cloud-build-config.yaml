@@ -1,0 +1,17 @@
+---
+steps:
+  - id: step-a
+    name: gcr.io/cloud-builders/docker
+
+  - id: step-b
+    name: gcr.io/cloud-builders/docker
+
+  - id: step-c
+    name: gcr.io/cloud-builders/docker
+    waitFor:
+      - 'step-a'
+
+  - id: step-d
+    name: gcr.io/cloud-builders/docker
+    waitFor:
+      - '-'
