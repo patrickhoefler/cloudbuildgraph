@@ -1,5 +1,7 @@
 # Cloud Build Graph
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/patrickhoefler/cloudbuildgraph)](https://goreportcard.com/report/github.com/patrickhoefler/cloudbuildgraph)
+
 Visualize your Google Cloud Build steps with GraphViz.
 
 ## Dependencies
