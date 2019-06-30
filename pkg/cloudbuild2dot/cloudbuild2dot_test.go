@@ -1,30 +1,28 @@
 package cloudbuild2dot_test
 
 import (
-	"fmt"
 	"io/ioutil"
+	"testing"
 
 	"github.com/patrickhoefler/cloudbuildgraph/pkg/cloudbuild2dot"
+	"github.com/stretchr/testify/assert"
 )
 
-func ExampleBuildDotFile() {
-	data, _ := ioutil.ReadFile("test/valid-cloud-build-config.yaml")
-	fmt.Println(cloudbuild2dot.BuildDotFile(data))
-	// Output:
-	// digraph G {
-	// 	nodesep=0.4;
-	// 	splines=ortho;
-	// 	"step-a"->"step-b";
-	// 	"step-a"->"step-c";
-	// 	subgraph rank0 {
-	// 	rank=same;
-	// 	"step-a" [ shape=Mrecord, width=2 ];
-	// 	"step-d" [ shape=Mrecord, width=2 ];
-	//
-	// }
-	// ;
-	// 	"step-b" [ shape=Mrecord, width=2 ];
-	// 	"step-c" [ shape=Mrecord, width=2 ];
-	//
-	// }
+func TestValidCloudBuildConfig(t *testing.T) {
+	validInput, _ := ioutil.ReadFile("test/valid-input.yaml")
+	validOutput, _ := ioutil.ReadFile("test/valid-output.dot")
+	assert.Equal(
+		t,
+		string(validOutput),
+		cloudbuild2dot.BuildDotFile(validInput),
+	)
+}
+
+func TestInputFileNotFound(t *testing.T) {
+	cloudBuildConfig := cloudbuild2dot.BuildDotFile([]byte(""))
+	assert.Equal(
+		t,
+		"",
+		cloudBuildConfig,
+	)
 }
