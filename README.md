@@ -1,25 +1,22 @@
-# Cloud Build Graph
+# cloudbuildgraph
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/patrickhoefler/cloudbuildgraph)](https://goreportcard.com/report/github.com/patrickhoefler/cloudbuildgraph)
 
 Visualize your Google Cloud Build steps with GraphViz.
 
-## Dependencies
+## Getting Started
 
-- [GraphViz](https://www.graphviz.org/)
+### Prerequisites
+
+Make sure you have [GraphViz](https://www.graphviz.org/) installed.
 
 ## Usage
 
-### Local
-
 ```shell
-cat cloudbuild.yaml | cloudbuildgraph | dot -Tpdf > cloudbuild.pdf
-open cloudbuild.pdf
+docker run --rm -v "$(pwd)"/cloudbuild.yaml:/cloudbuild.yaml patrickhoefler/cloudbuildgraph | dot -Tpdf > cloudbuild.pdf
 ```
 
-### Docker
+## Known Issues
 
-```shell
-cat cloudbuild.yaml | docker run --rm -i patrickhoefler/cloudbuildgraph | dot -Tpdf > cloudbuild.pdf
-open cloudbuild.pdf
-```
+- `cloudbuildgraph` currently expects a `cloudbuild.yaml` file in the working directory.
+- `cloudbuildgraph` currently expects that every build step has an ID.
