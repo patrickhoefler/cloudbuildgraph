@@ -1,44 +1,22 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"io"
+	"io/ioutil"
 	"log"
-	"os"
 
 	"github.com/patrickhoefler/cloudbuildgraph/pkg/cloudbuild2dot"
 )
 
 func main() {
-	// Read only from Stdin for now
-	info, err := os.Stdin.Stat()
+	// For now we assume that there is a cloudbuild.yaml file in the working directory
+	cloudBuildConfigYAML, err := ioutil.ReadFile("cloudbuild.yaml")
 	if err != nil {
+		log.SetFlags(0)
 		log.Fatal(err)
 	}
 
-	if info.Mode()&os.ModeNamedPipe == 0 && info.Mode()&os.ModeCharDevice == 0 {
-		fmt.Println("cloudbuildgraph currently only supports piped input.")
-		fmt.Println("Please see https://github.com/patrickhoefler/cloudbuildgraph#usage for usage instructions.")
-		os.Exit(1)
-	}
+	dotFileContent := cloudbuild2dot.BuildDotFile(cloudBuildConfigYAML)
 
-	reader := bufio.NewReader(os.Stdin)
-	var data []byte
-
-	for {
-		input, err := reader.ReadByte()
-		if err != nil {
-			if err == io.EOF {
-				break
-			} else {
-				log.Fatal(err)
-			}
-		}
-		data = append(data, input)
-	}
-
-	dotFile := cloudbuild2dot.BuildDotFile(data)
-
-	fmt.Println(dotFile)
+	fmt.Println(dotFileContent)
 }

@@ -25,10 +25,6 @@ func BuildDotFile(data []byte) string {
 		log.Fatal(err)
 	}
 
-	if len(cloudBuildConfig.Steps) == 0 {
-		return ""
-	}
-
 	graph := gographviz.NewEscape()
 	graph.SetName("G")
 	graph.SetDir(true)

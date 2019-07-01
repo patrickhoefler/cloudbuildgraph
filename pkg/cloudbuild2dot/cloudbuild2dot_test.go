@@ -17,12 +17,3 @@ func TestValidCloudBuildConfig(t *testing.T) {
 		cloudbuild2dot.BuildDotFile(validInput),
 	)
 }
-
-func TestInputFileNotFound(t *testing.T) {
-	cloudBuildConfig := cloudbuild2dot.BuildDotFile([]byte(""))
-	assert.Equal(
-		t,
-		"",
-		cloudBuildConfig,
-	)
-}
