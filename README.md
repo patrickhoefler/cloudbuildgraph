@@ -12,7 +12,7 @@ Visualize your Google Cloud Build steps with GraphViz.
 
 Make sure you have [GraphViz](https://www.graphviz.org/) installed.
 
-## Usage
+### Usage
 
 ```shell
 docker run --rm -v "$(pwd)"/cloudbuild.yaml:/cloudbuild.yaml patrickhoefler/cloudbuildgraph | dot -Tpdf > cloudbuild.pdf
