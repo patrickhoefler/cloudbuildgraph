@@ -4,6 +4,8 @@
 
 Visualize your Google Cloud Build steps with GraphViz.
 
+![Example graph](example/cloudbuild.png)
+
 ## Getting Started
 
 ### Prerequisites
