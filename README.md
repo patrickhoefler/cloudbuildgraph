@@ -20,5 +20,5 @@ docker run --rm -v "$(pwd)":/cloudbuild patrickhoefler/cloudbuildgraph | dot -Tp
 
 ## Known Issues
 
-- `cloudbuildgraph` currently expects a `cloudbuild.yaml` file in the working directory.
+- `cloudbuildgraph` currently expects a `cloudbuild.yaml` or `cloudbuild.yml` file in the working directory.
 - `cloudbuildgraph` currently expects that every build step has an ID.
