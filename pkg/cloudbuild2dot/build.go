@@ -1,30 +1,11 @@
 package cloudbuild2dot
 
 import (
-	"log"
-
 	"github.com/awalterschulze/gographviz"
-	"gopkg.in/yaml.v2"
 )
 
-// CloudBuildConfig contains the parts of the Cloud Build configuration schema
-// that are relevant for generating the steps graph
-type CloudBuildConfig struct {
-	Steps []struct {
-		ID      string
-		WaitFor []string `yaml:"waitFor"`
-	}
-}
-
 // BuildDotFile builds the Graphviz .dot file from a Google Cloud Build configuration
-func BuildDotFile(data []byte) string {
-	cloudBuildConfig := CloudBuildConfig{}
-
-	err := yaml.Unmarshal(data, &cloudBuildConfig)
-	if err != nil {
-		log.Fatal(err)
-	}
-
+func BuildDotFile(cloudBuildConfig CloudBuildConfig) string {
 	graph := gographviz.NewEscape()
 	graph.SetName("G")
 	graph.SetDir(true)

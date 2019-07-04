@@ -15,7 +15,7 @@ Make sure you have [GraphViz](https://www.graphviz.org/) installed.
 ### Usage
 
 ```shell
-docker run --rm -v "$(pwd)"/cloudbuild.yaml:/cloudbuild.yaml patrickhoefler/cloudbuildgraph | dot -Tpdf > cloudbuild.pdf
+docker run --rm -v "$(pwd)":/cloudbuild patrickhoefler/cloudbuildgraph | dot -Tpdf > cloudbuild.pdf
 ```
 
 ## Known Issues
