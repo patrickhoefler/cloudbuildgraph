@@ -2,12 +2,18 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/patrickhoefler/cloudbuildgraph/pkg/cloudbuild2dot"
 )
 
 func main() {
-	cloudBuildConfig, _ := cloudbuild2dot.LoadCloudBuildConfig()
+	log.SetFlags(0)
+
+	cloudBuildConfig, err := cloudbuild2dot.LoadCloudBuildConfig()
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	dotFileContent := cloudbuild2dot.BuildDotFile(cloudBuildConfig)
 
