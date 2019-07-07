@@ -2,28 +2,38 @@ builds:
   - main: ./cmd/cloudbuildgraph/
     env:
       - CGO_ENABLED=0
+
 archives:
   - replacements:
-      darwin: Darwin
+      darwin: MacOS
       linux: Linux
       windows: Windows
       386: i386
       amd64: x86_64
-checksum:
-  name_template: "checksums.txt"
-snapshot:
-  name_template: "{{ .Tag }}-next"
+
 changelog:
   sort: asc
   filters:
     exclude:
-      - "^docs:"
-      - "^test:"
+      - '^docs:'
+      - '^test:'
+
 dockers:
   - binaries:
       - cloudbuildgraph
     image_templates:
-      - "patrickhoefler/cloudbuildgraph:latest"
-      - "patrickhoefler/cloudbuildgraph:{{ .Major }}"
-      - "patrickhoefler/cloudbuildgraph:{{ .Major }}.{{ .Minor }}"
-      - "patrickhoefler/cloudbuildgraph:{{ .Major }}.{{ .Minor }}.{{ .Patch }}"
+      - 'patrickhoefler/cloudbuildgraph:latest'
+      - 'patrickhoefler/cloudbuildgraph:{{ .Major }}'
+      - 'patrickhoefler/cloudbuildgraph:{{ .Major }}.{{ .Minor }}'
+      - 'patrickhoefler/cloudbuildgraph:{{ .Major }}.{{ .Minor }}.{{ .Patch }}'
+
+brews:
+  - github:
+      owner: patrickhoefler
+      name: homebrew-cloudbuildgraph
+
+    homepage: https://github.com/patrickhoefler/cloudbuildgraph
+    description: 'Visualize your Google Cloud Build pipeline'
+
+    dependencies:
+      - graphviz
