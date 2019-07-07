@@ -7,15 +7,15 @@ steps:
     args:
       - build
 
-  - name: gcr.io/my-project/test
+  - id: test
+    name: gcr.io/my-project/test
 
-  - name: gcr.io/cloud-builders/gsutil
-    id: fetch
+  - id: fetch
+    name: gcr.io/cloud-builders/gsutil
     waitFor:
       - '-'
 
   - name: gcr.io/my-project/package
-    id: package
     waitFor:
       - fetch
       - test
