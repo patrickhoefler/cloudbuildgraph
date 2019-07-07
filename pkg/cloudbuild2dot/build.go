@@ -6,7 +6,7 @@ import (
 	"github.com/awalterschulze/gographviz"
 )
 
-// BuildDotFile builds a Graphviz .dot file from a Google Cloud Build configuration
+// BuildDotFile builds a GraphViz .dot file from a Google Cloud Build configuration
 func BuildDotFile(cloudBuildConfig CloudBuildConfig) string {
 	graph := gographviz.NewEscape()
 	graph.SetName("G")
