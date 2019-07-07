@@ -13,9 +13,9 @@
 
 ### Prerequisites
 
-- Make sure you have [GraphViz](https://www.graphviz.org/) installed.
+- [GraphViz](https://www.graphviz.org/) installed locally
 
-- For now, you need a `cloudbuild.yaml` or `cloudbuild.yml` file in the working directory. Cloud Build config files in JSON are not supported yet.
+- A `cloudbuild.yaml`, `cloudbuild.yml` or `cloudbuild.json` [Google Cloud Build config](https://cloud.google.com/cloud-build/docs/build-config) file in your current working directory
 
 ### Usage
 

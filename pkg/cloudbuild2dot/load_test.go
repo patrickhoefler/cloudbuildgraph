@@ -7,22 +7,29 @@ import (
 	"github.com/spf13/afero"
 )
 
-func Test_loadYAMLConfig(t *testing.T) {
+func Test_loadConfig(t *testing.T) {
 	type args struct {
 		AppFs afero.Fs
 	}
 
-	var yamlFileContent = []byte("{steps: [{id: yaml}]}")
-	var ymlFileContent = []byte("{steps: [{id: yml}]}")
+	yamlFileContent := []byte("{steps: [{id: yaml}]}")
+	ymlFileContent := []byte("{steps: [{id: yml}]}")
+	jsonFileContent := []byte("{\"steps\": [{\"id\": \"json\"}]}")
 
 	// cloudbuild.yaml
-	var yamlFS = afero.NewMemMapFs()
+	yamlFS := afero.NewMemMapFs()
 	afero.WriteFile(yamlFS, "cloudbuild.yaml", yamlFileContent, 0644)
 	afero.WriteFile(yamlFS, "cloudbuild.yml", ymlFileContent, 0644)
+	afero.WriteFile(yamlFS, "cloudbuild.json", jsonFileContent, 0644)
 
 	// cloudbuild.yml
-	var ymlFS = afero.NewMemMapFs()
+	ymlFS := afero.NewMemMapFs()
 	afero.WriteFile(ymlFS, "cloudbuild.yml", ymlFileContent, 0644)
+	afero.WriteFile(ymlFS, "cloudbuild.json", jsonFileContent, 0644)
+
+	// cloudbuild.json
+	jsonFS := afero.NewMemMapFs()
+	afero.WriteFile(jsonFS, "cloudbuild.json", jsonFileContent, 0644)
 
 	tests := []struct {
 		name    string
@@ -48,19 +55,25 @@ func Test_loadYAMLConfig(t *testing.T) {
 			yamlToCloudBuild(ymlFileContent),
 			false,
 		},
+		{
+			"cloudbuild.json",
+			args{jsonFS},
+			jsonToCloudBuild(jsonFileContent),
+			false,
+		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := loadYAMLConfig(tt.args.AppFs)
+			got, err := loadConfig(tt.args.AppFs)
 
 			if (err != nil) != tt.wantErr {
-				t.Errorf("loadYAMLConfig() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("loadConfig() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
 
 			if diff := cmp.Diff(tt.want, got); diff != "" {
-				t.Errorf("loadYAMLConfig() mismatch (-want +got):\n%s", diff)
+				t.Errorf("loadConfig() mismatch (-want +got):\n%s", diff)
 			}
 		})
 	}

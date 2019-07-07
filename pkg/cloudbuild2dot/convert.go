@@ -1,15 +1,27 @@
 package cloudbuild2dot
 
 import (
+	"encoding/json"
 	"log"
 
 	"gopkg.in/yaml.v2"
 )
 
-func yamlToCloudBuild(yamlContent []byte) CloudBuildConfig {
+func jsonToCloudBuild(content []byte) CloudBuildConfig {
 	cloudBuildConfig := CloudBuildConfig{}
 
-	err := yaml.Unmarshal(yamlContent, &cloudBuildConfig)
+	err := json.Unmarshal(content, &cloudBuildConfig)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return cloudBuildConfig
+}
+
+func yamlToCloudBuild(content []byte) CloudBuildConfig {
+	cloudBuildConfig := CloudBuildConfig{}
+
+	err := yaml.Unmarshal(content, &cloudBuildConfig)
 	if err != nil {
 		log.Fatal(err)
 	}

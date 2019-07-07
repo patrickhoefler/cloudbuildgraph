@@ -11,10 +11,10 @@ import (
 // LoadCloudBuildConfig looks for the Cloud Build configuration file (currently
 // only YAML is supported) and returns a CloudBuildConfig.
 func LoadCloudBuildConfig() (cloudBuildConfig CloudBuildConfig, err error) {
-	return loadYAMLConfig(afero.NewOsFs())
+	return loadConfig(afero.NewOsFs())
 }
 
-func loadYAMLConfig(AppFs afero.Fs) (CloudBuildConfig, error) {
+func loadConfig(AppFs afero.Fs) (CloudBuildConfig, error) {
 	for _, filename := range []string{"cloudbuild.yaml", "cloudbuild.yml"} {
 		yamlContent, err := afero.ReadFile(AppFs, filename)
 		if err != nil {
@@ -28,5 +28,18 @@ func loadYAMLConfig(AppFs afero.Fs) (CloudBuildConfig, error) {
 		return yamlToCloudBuild(yamlContent), nil
 	}
 
-	return CloudBuildConfig{}, errors.New("Could not find cloudbuild.y(a)ml in the current working directory")
+	for _, filename := range []string{"cloudbuild.json"} {
+		jsonContent, err := afero.ReadFile(AppFs, filename)
+		if err != nil {
+			if os.IsNotExist(err) {
+				continue
+			} else {
+				log.Fatal(err)
+			}
+		}
+
+		return jsonToCloudBuild(jsonContent), nil
+	}
+
+	return CloudBuildConfig{}, errors.New("Could not find any Cloud Build config file in the current working directory")
 }

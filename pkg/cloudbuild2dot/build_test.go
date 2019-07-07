@@ -18,8 +18,13 @@ func TestBuildDotFile(t *testing.T) {
 		want string
 	}{
 		{
-			"valid config",
+			"valid YAML config",
 			args{yamlToCloudBuild(loadTestFile("valid-input.yaml"))},
+			string(loadTestFile("valid-output.dot")),
+		},
+		{
+			"valid JSON config",
+			args{jsonToCloudBuild(loadTestFile("valid-input.json"))},
 			string(loadTestFile("valid-output.dot")),
 		},
 	}
