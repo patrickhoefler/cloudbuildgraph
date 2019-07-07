@@ -1,12 +1,13 @@
 digraph G {
 	nodesep=0.4;
 	splines=ortho;
-	"step-a"->"step-b";
-	"step-a"->"step-c";
+	"docker pull"->"step-b";
+	"my-image"->"step-c";
+	"step-b"->"step-c";
 	subgraph rank0 {
 	rank=same;
-	"step-a" [ shape=Mrecord, width=2 ];
-	"step-d" [ shape=Mrecord, width=2 ];
+	"docker pull" [ shape=Mrecord, width=2 ];
+	"my-image" [ shape=Mrecord, width=2 ];
 
 }
 ;

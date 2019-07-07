@@ -1,10 +1,12 @@
 package cloudbuild2dot
 
 import (
+	"strings"
+
 	"github.com/awalterschulze/gographviz"
 )
 
-// BuildDotFile builds the Graphviz .dot file from a Google Cloud Build configuration
+// BuildDotFile builds a Graphviz .dot file from a Google Cloud Build configuration
 func BuildDotFile(cloudBuildConfig CloudBuildConfig) string {
 	graph := gographviz.NewEscape()
 	graph.SetName("G")
@@ -13,13 +15,13 @@ func BuildDotFile(cloudBuildConfig CloudBuildConfig) string {
 	graph.AddAttr("G", "nodesep", "0.4")
 
 	startingSteps := []string{
-		cloudBuildConfig.Steps[0].ID,
+		getStepLabel(cloudBuildConfig.Steps[0]),
 	}
 
 	for index, step := range cloudBuildConfig.Steps {
 		graph.AddNode(
 			"G",
-			step.ID,
+			getStepLabel(step),
 			map[string]string{
 				"shape": "Mrecord",
 				"width": "2",
@@ -28,14 +30,24 @@ func BuildDotFile(cloudBuildConfig CloudBuildConfig) string {
 
 		for _, waitForStepID := range step.WaitFor {
 			if waitForStepID == "-" {
-				startingSteps = append(startingSteps, step.ID)
+				startingSteps = append(startingSteps, getStepLabel(step))
 			} else {
-				graph.AddEdge(waitForStepID, step.ID, true, nil)
+				graph.AddEdge(
+					waitForStepID,
+					getStepLabel(step),
+					true,
+					nil,
+				)
 			}
 		}
 
 		if step.WaitFor == nil && index > 0 {
-			graph.AddEdge(cloudBuildConfig.Steps[index-1].ID, step.ID, true, nil)
+			graph.AddEdge(
+				getStepLabel(cloudBuildConfig.Steps[index-1]),
+				getStepLabel(step),
+				true,
+				nil,
+			)
 		}
 	}
 
@@ -46,4 +58,18 @@ func BuildDotFile(cloudBuildConfig CloudBuildConfig) string {
 	}
 
 	return graph.String()
+}
+
+func getStepLabel(step Step) string {
+	if step.ID != "" {
+		return step.ID
+	}
+
+	splitName := strings.Split(step.Name, "/")
+
+	if len(step.Args) > 0 {
+		return splitName[len(splitName)-1] + " " + step.Args[0]
+	}
+
+	return splitName[len(splitName)-1]
 }

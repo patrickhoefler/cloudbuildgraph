@@ -1,17 +1,20 @@
 ---
 steps:
-  - id: step-a
-    name: gcr.io/cloud-builders/docker
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - pull
 
   - id: step-b
     name: gcr.io/cloud-builders/docker
+    args:
+      - build
+
+  - name: gcr.io/my-project/my-image
+    waitFor:
+      - '-'
 
   - id: step-c
     name: gcr.io/cloud-builders/docker
     waitFor:
-      - 'step-a'
-
-  - id: step-d
-    name: gcr.io/cloud-builders/docker
-    waitFor:
-      - '-'
+      - my-image
+      - step-b

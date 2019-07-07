@@ -8,18 +8,6 @@ import (
 	"github.com/spf13/afero"
 )
 
-// CloudBuildConfig contains the parts of the Cloud Build configuration schema
-// that are relevant for generating the steps graph
-type CloudBuildConfig struct {
-	Steps []CloudBuildConfigStep
-}
-
-// CloudBuildConfigStep represents a single build step within a Cloud Build configuration
-type CloudBuildConfigStep struct {
-	ID      string
-	WaitFor []string `yaml:"waitFor"`
-}
-
 // LoadCloudBuildConfig looks for the Cloud Build configuration file (currently
 // only YAML is supported) and returns a CloudBuildConfig.
 func LoadCloudBuildConfig() (cloudBuildConfig CloudBuildConfig, err error) {

@@ -12,10 +12,6 @@ func TestBuildDotFile(t *testing.T) {
 		cloudBuildConfig CloudBuildConfig
 	}
 
-	// valid config
-	var validYAMLInput, _ = ioutil.ReadFile("test/valid-input.yaml")
-	var validYAMLOutput, _ = ioutil.ReadFile("test/valid-output.dot")
-
 	tests := []struct {
 		name string
 		args args
@@ -23,8 +19,8 @@ func TestBuildDotFile(t *testing.T) {
 	}{
 		{
 			"valid config",
-			args{yamlToCloudBuild(validYAMLInput)},
-			string(validYAMLOutput),
+			args{yamlToCloudBuild(loadTestFile("valid-input.yaml"))},
+			string(loadTestFile("valid-output.dot")),
 		},
 	}
 
@@ -37,4 +33,10 @@ func TestBuildDotFile(t *testing.T) {
 			}
 		})
 	}
+}
+
+func loadTestFile(filename string) []byte {
+	testFileContent, _ := ioutil.ReadFile("test/" + filename)
+
+	return testFileContent
 }
