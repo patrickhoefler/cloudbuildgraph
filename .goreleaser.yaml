@@ -28,7 +28,7 @@ dockers:
       - 'patrickhoefler/cloudbuildgraph:{{ .Major }}.{{ .Minor }}.{{ .Patch }}'
 
 brews:
-  - github:
+  - tap:
       owner: patrickhoefler
       name: homebrew-cloudbuildgraph
 
