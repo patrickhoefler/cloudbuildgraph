@@ -33,3 +33,7 @@ brew install cloudbuildgraph
 
 cloudbuildgraph
 ```
+
+## License
+
+[MIT](https://github.com/patrickhoefler/cloudbuildgraph/blob/main/LICENSE)
