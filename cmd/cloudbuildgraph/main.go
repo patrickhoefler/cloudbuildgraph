@@ -7,7 +7,7 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/patrickhoefler/cloudbuildgraph/pkg/cloudbuild2dot"
+	"github.com/patrickhoefler/cloudbuildgraph/internal/cloudbuild2dot"
 )
 
 func main() {
