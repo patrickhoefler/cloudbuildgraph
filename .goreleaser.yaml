@@ -1,6 +1,5 @@
 builds:
-  - main: ./cmd/cloudbuildgraph/
-    env:
+  - env:
       - CGO_ENABLED=0
 
 archives:
