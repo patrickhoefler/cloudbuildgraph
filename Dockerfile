@@ -1,10 +1,16 @@
-FROM alpine:3.12.0@sha256:a15790640a6690aa1730c38cf0a440e2aa44aaca9b0e8931a9f2b0d7cc90fd65
+FROM ubuntu:20.04@sha256:31dfb10d52ce76c5ca0aa19d10b3e6424b830729e32a89a7c6eee2cda2be67a5
 
-RUN \
-  apk add --update --no-cache \
+RUN apt-get update \
+  && apt-get install -y \
   graphviz \
-  ttf-freefont
+  && rm -rf /var/lib/apt/lists/*
 
+# Run as non-root user
+RUN groupadd --gid 1000 cloudbuildgraph \
+  && useradd --uid 1000 --gid cloudbuildgraph --shell /bin/bash --create-home cloudbuildgraph
+USER cloudbuildgraph
+
+# This currently only works with goreleaser
 COPY cloudbuildgraph /
 
 WORKDIR /cloudbuild
