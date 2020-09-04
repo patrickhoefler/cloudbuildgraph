@@ -1,4 +1,4 @@
-FROM ubuntu:20.04@sha256:31dfb10d52ce76c5ca0aa19d10b3e6424b830729e32a89a7c6eee2cda2be67a5
+FROM ubuntu:20.04@sha256:6f2fb2f9fb5582f8b587837afd6ea8f37d8d1d9e41168c90f410a6ef15fa8ce5
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
