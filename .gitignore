@@ -13,3 +13,6 @@
 
 # Binaries built by goreleaser
 dist
+
+# Binary built by go build
+cloudbuildgraph
