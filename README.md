@@ -7,7 +7,7 @@
 
 ## Example Output
 
-<img src="example/cloudbuild.png" alt="Example graph" width="400px">
+![Example graph](example/cloudbuild.png)
 
 ## Getting Started
 

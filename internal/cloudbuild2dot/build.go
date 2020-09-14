@@ -12,7 +12,8 @@ func BuildDotFile(cloudBuildConfig CloudBuildConfig) string {
 	graph.SetName("G")
 	graph.SetDir(true)
 	graph.AddAttr("G", "splines", "ortho")
-	graph.AddAttr("G", "nodesep", "0.4")
+	graph.AddAttr("G", "rankdir", "LR")
+	graph.AddAttr("G", "nodesep", "1")
 
 	startingSteps := []string{
 		getStepLabel(cloudBuildConfig.Steps[0]),
