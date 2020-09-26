@@ -59,10 +59,13 @@ jobs:
     - name: Build
       run: go build
 
-    - name: Run the binary on Mac
+    - name: Install graphviz on macOS
       if: runner.os == 'macOS'
-      run: cd example && ../cloudbuildgraph
+      run: apt-get install -y --no-install-recommends graphviz
 
-    - name: Run the binary on Windows
+    - name: Install graphviz on Windows
       if: runner.os == 'Windows'
-      run: cp cloudbuildgraph.exe example && cd example && cloudbuildgraph.exe
+      run: choco install graphviz
+
+    - name: Run the binary
+      run: cd example && ../cloudbuildgraph
