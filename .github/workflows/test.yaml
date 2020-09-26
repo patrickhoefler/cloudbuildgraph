@@ -59,5 +59,10 @@ jobs:
     - name: Build
       run: go build
 
-    - name: Run the binary
+    - name: Run the binary on Mac
+      if: runner.os == 'macOS'
       run: cd example && ../cloudbuildgraph
+
+    - name: Run the binary on Windows
+      if: runner.os == 'Windows'
+      run: cp cloudbuildgraph.exe example && cd example && cloudbuildgraph.exe
