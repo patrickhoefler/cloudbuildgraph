@@ -1,5 +1,6 @@
 digraph G {
-	nodesep=0.4;
+	nodesep=1;
+	rankdir=LR;
 	splines=ortho;
 	"docker pull"->"step-b";
 	"my-image"->"step-c";
