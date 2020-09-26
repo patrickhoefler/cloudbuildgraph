@@ -29,11 +29,8 @@ jobs:
       with:
         args: release --snapshot --skip-publish
 
-    - name: change directory permissions
+    - name: Make example directory writable for all users
       run: chmod o+w example
-
-    - name: check permissions
-      run: cd example && docker run --rm --mount type=bind,source="$(pwd)",target=/cloudbuild --entrypoint /bin/sh ghcr.io/patrickhoefler/cloudbuildgraph:0.0.0 -c "ls -la /cloudbuild"
 
     - name: Run the built Docker image
       run: cd example && docker run --mount type=bind,source="$(pwd)",target=/cloudbuild ghcr.io/patrickhoefler/cloudbuildgraph:0.0.0
