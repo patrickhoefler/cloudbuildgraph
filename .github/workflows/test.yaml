@@ -30,7 +30,7 @@ jobs:
         args: release --snapshot --skip-publish
 
     - name: change directory permissions
-      run: chmod +w example
+      run: chmod o+w example
 
     - name: check permissions
       run: cd example && docker run --rm --mount type=bind,source="$(pwd)",target=/cloudbuild --entrypoint /bin/sh ghcr.io/patrickhoefler/cloudbuildgraph:0.0.0 -c "ls -la /cloudbuild"
