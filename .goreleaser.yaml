@@ -15,10 +15,10 @@ dockers:
   - binaries:
       - cloudbuildgraph
     image_templates:
-      - 'patrickhoefler/cloudbuildgraph:latest'
-      - 'patrickhoefler/cloudbuildgraph:{{ .Major }}'
-      - 'patrickhoefler/cloudbuildgraph:{{ .Major }}.{{ .Minor }}'
-      - 'patrickhoefler/cloudbuildgraph:{{ .Major }}.{{ .Minor }}.{{ .Patch }}'
+      - 'ghcr.io/patrickhoefler/cloudbuildgraph:latest'
+      - 'ghcr.io/patrickhoefler/cloudbuildgraph:{{ .Major }}'
+      - 'ghcr.io/patrickhoefler/cloudbuildgraph:{{ .Major }}.{{ .Minor }}'
+      - 'ghcr.io/patrickhoefler/cloudbuildgraph:{{ .Major }}.{{ .Minor }}.{{ .Patch }}'
 
 brews:
   - tap:
