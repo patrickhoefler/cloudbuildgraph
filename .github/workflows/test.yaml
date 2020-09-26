@@ -29,6 +29,12 @@ jobs:
       with:
         args: release --snapshot --skip-publish
 
+    - name: List local images
+      run: docker image ls
+
+    - name: Run image without mount
+      run: docker run ghcr.io/patrickhoefler/cloudbuildgraph:0.0.0
+
     - name: Run the built Docker image
       run: |
         cd example \
