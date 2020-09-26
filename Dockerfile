@@ -1,5 +1,7 @@
 FROM ubuntu:latest@sha256:2e70e9c81838224b5311970dbf7ed16802fbfe19e7a70b3cbfa3d7522aa285b4
 
+LABEL org.opencontainers.image.source="https://github.com/patrickhoefler/cloudbuildgraph"
+
 # Because there is no "lock" mechanism for apt dependencies,
 # this step prevents a fully reproducible build
 RUN apt-get update \
