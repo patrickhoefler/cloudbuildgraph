@@ -29,8 +29,8 @@ jobs:
       with:
         args: release --snapshot --skip-publish
 
-    - name: Try mount binds
-      run: cd example && docker run --mount type=bind,source="$(pwd)",target=/cloudbuild ubuntu ls -l cloudbuild
+    - name: Whas has been built
+      run: docker image ls
 
     - name: Run the built Docker image
       run: cd example && docker run --mount type=bind,source="$(pwd)",target=/cloudbuild ghcr.io/patrickhoefler/cloudbuildgraph:0.0.0
