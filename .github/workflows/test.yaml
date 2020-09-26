@@ -61,7 +61,7 @@ jobs:
 
     - name: Install graphviz on macOS
       if: runner.os == 'macOS'
-      run: apt-get install -y --no-install-recommends graphviz
+      run: brew install graphviz
 
     - name: Install graphviz on Windows
       if: runner.os == 'Windows'
