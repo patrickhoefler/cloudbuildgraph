@@ -30,7 +30,7 @@ jobs:
         args: release --snapshot --skip-publish
 
     - name: create file
-      run: cd example && docker run --mount type=bind,source="$(pwd)",target=/cloudbuild ubuntu touch test.txt
+      run: cd example && docker run --mount type=bind,source="$(pwd)",target=/cloudbuild ubuntu touch /cloudbuild/test.txt
 
     - name: check file
       run: ls -la example
