@@ -11,8 +11,11 @@
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
-# Binaries built by goreleaser
+# goreleaser
 dist
 
-# Binary built by go build
+# go build
 cloudbuildgraph
+
+# cloudbuildgraph
+example/cloudbuild.pdf
