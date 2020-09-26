@@ -30,8 +30,14 @@ docker run --rm --mount type=bind,source="$(pwd)",target=/cloudbuild ghcr.io/pat
 ```shell
 brew tap patrickhoefler/cloudbuildgraph
 brew install cloudbuildgraph
-
 cloudbuildgraph
+```
+
+#### Build
+
+```shell
+go build
+./cloudbuildgraph
 ```
 
 ## License
