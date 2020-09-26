@@ -30,7 +30,7 @@ jobs:
         args: release --snapshot --skip-publish
 
     - name: Where are we?
-      run: ls -l
+      run: cd example && ls -l
 
     - name: Run the built Docker image
       run: cd example && docker run --mount type=bind,source="$(pwd)",target=/cloudbuild ghcr.io/patrickhoefler/cloudbuildgraph:0.0.0
