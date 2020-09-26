@@ -58,3 +58,6 @@ jobs:
 
     - name: Build
       run: go build
+
+    - name: Run the binary
+      run: cd example && ../cloudbuildgraph
