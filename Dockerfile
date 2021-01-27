@@ -1,4 +1,4 @@
-FROM ubuntu:latest@sha256:3093096ee188f8ff4531949b8f6115af4747ec1c58858c091c8cb4579c39cc4e
+FROM ubuntu:latest@sha256:703218c0465075f4425e58fac086e09e1de5c340b12976ab9eb8ad26615c3715
 
 LABEL org.opencontainers.image.source="https://github.com/patrickhoefler/cloudbuildgraph"
 
