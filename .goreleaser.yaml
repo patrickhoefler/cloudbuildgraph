@@ -12,9 +12,7 @@ changelog:
       - '^test:'
 
 dockers:
-  - binaries:
-      - cloudbuildgraph
-    image_templates:
+  - image_templates:
       - 'ghcr.io/patrickhoefler/cloudbuildgraph:latest'
       - 'ghcr.io/patrickhoefler/cloudbuildgraph:{{ .Major }}'
       - 'ghcr.io/patrickhoefler/cloudbuildgraph:{{ .Major }}.{{ .Minor }}'
