@@ -18,7 +18,7 @@
 
 ### Installation and Usage
 
-Running `cloudbuildgraph` will create a `cloudbuild.pdf` file in your current working directory that contains a visual graph representation or your Cloud Build pipeline.
+Running `cloudbuildgraph` will create a `cloudbuild.pdf` file in your current working directory that contains a visual graph representation of your Cloud Build pipeline.
 
 #### Docker
 
