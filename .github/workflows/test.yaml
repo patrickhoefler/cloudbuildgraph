@@ -63,7 +63,7 @@ jobs:
 
     - name: '[Ubuntu] Install graphviz'
       if: runner.os == 'Linux'
-      run: apt install -–no-install-recommends -y graphviz
+      run: apt install --no-install-recommends -y graphviz
 
     - name: '[Windows] Install graphviz'
       if: runner.os == 'Windows'
