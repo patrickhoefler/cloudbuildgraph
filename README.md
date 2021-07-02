@@ -23,7 +23,11 @@ Running `cloudbuildgraph` will create a `cloudbuild.pdf` file in your current wo
 #### Docker
 
 ```shell
-docker run --rm --workdir /workspace --mount type=bind,source="$(pwd)",target=/workspace ghcr.io/patrickhoefler/cloudbuildgraph
+docker run \
+  --rm \
+  --workdir /workspace \
+  --mount type=bind,source="$(pwd)",target=/workspace \
+  ghcr.io/patrickhoefler/cloudbuildgraph
 ```
 
 #### Homebrew
@@ -33,7 +37,7 @@ brew install patrickhoefler/tap/cloudbuildgraph
 cloudbuildgraph
 ```
 
-#### Build
+#### Build from Source
 
 ```shell
 go build
