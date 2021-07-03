@@ -4,7 +4,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/e6b4c7aef80d06332d19/maintainability)](https://codeclimate.com/github/patrickhoefler/cloudbuildgraph/maintainability)
 [![codecov](https://codecov.io/gh/patrickhoefler/cloudbuildgraph/branch/main/graph/badge.svg)](https://codecov.io/gh/patrickhoefler/cloudbuildgraph)
 
-`cloudbuildgraph` visualizes your Google Cloud Build pipeline.
+`cloudbuildgraph` visualizes your Google Cloud Build pipelines.
 
 ## Example Output
 
