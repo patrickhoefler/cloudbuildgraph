@@ -20,17 +20,17 @@
 
 Running `cloudbuildgraph` will create a `cloudbuild.pdf` file in your current working directory that contains a visual graph representation of your Cloud Build pipeline.
 
-#### Docker
+#### Docker / [nerdctl](https://github.com/containerd/nerdctl)
 
 ```shell
 docker run \
   --rm \
   --workdir /workspace \
-  --mount type=bind,source="$(pwd)",target=/workspace \
+  --volume "$(pwd)":/workspace \
   ghcr.io/patrickhoefler/cloudbuildgraph
 ```
 
-#### Homebrew
+#### [Homebrew](https://brew.sh/)
 
 ```shell
 brew install patrickhoefler/tap/cloudbuildgraph
