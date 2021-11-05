@@ -32,14 +32,14 @@ docker run \
 
 #### [Homebrew](https://brew.sh/)
 
-```shell
+```text
 brew install patrickhoefler/tap/cloudbuildgraph
 cloudbuildgraph
 ```
 
 #### Build from Source
 
-```shell
+```text
 go build
 ./cloudbuildgraph
 ```
