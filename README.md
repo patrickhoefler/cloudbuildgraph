@@ -19,7 +19,7 @@
 
 Running `cloudbuildgraph` will create a `cloudbuild.pdf` file in your current working directory that contains a visual graph representation of your Cloud Build pipeline.
 
-#### Docker / [nerdctl](https://github.com/containerd/nerdctl)
+#### docker / [nerdctl](https://github.com/containerd/nerdctl)
 
 ```shell
 docker run \
