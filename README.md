@@ -1,7 +1,6 @@
 # cloudbuildgraph
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/patrickhoefler/cloudbuildgraph)](https://goreportcard.com/report/github.com/patrickhoefler/cloudbuildgraph)
-[![Maintainability](https://api.codeclimate.com/v1/badges/e6b4c7aef80d06332d19/maintainability)](https://codeclimate.com/github/patrickhoefler/cloudbuildgraph/maintainability)
 
 `cloudbuildgraph` visualizes your Google Cloud Build pipelines.
 
