@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"log"
 
-	"gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v3"
 )
 
 func jsonToCloudBuild(content []byte) CloudBuildConfig {
