@@ -1,5 +1,5 @@
 ### Release image
-FROM ubuntu:focal-20230605@sha256:a4165387d2c3cb47e913959895d7e5d9b32615dbc1e384998ed76989040eb655
+FROM ubuntu:focal-20230605@sha256:f8f658407c35733471596f25fdb4ed748b80e545ab57e84efbdb1dbbb01bd70e
 
 LABEL org.opencontainers.image.source="https://github.com/patrickhoefler/cloudbuildgraph"
 
