@@ -1,9 +1,9 @@
 steps:
-  - name: gcr.io/cloud-builders/docker
+  - name: gcr.io/cloud-builders/docker@sha256:ceb67ab3d4c55e2c1230f5187660217904fa44519af598c6e209687f869c60cb
     args:
       - pull
 
-  - name: gcr.io/cloud-builders/docker
+  - name: gcr.io/cloud-builders/docker@sha256:ceb67ab3d4c55e2c1230f5187660217904fa44519af598c6e209687f869c60cb
     args:
       - build
 
@@ -11,7 +11,7 @@ steps:
     name: gcr.io/my-project/test
 
   - id: fetch
-    name: gcr.io/cloud-builders/gsutil
+    name: gcr.io/cloud-builders/gsutil@sha256:7beb8a154fc771f6cb0827962374458ac99826a374895217aa838c2b7bcba2f3
     waitFor:
       - '-'
 
