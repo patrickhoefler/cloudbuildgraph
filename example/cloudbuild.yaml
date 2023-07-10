@@ -11,7 +11,7 @@ steps:
     name: gcr.io/my-project/test
 
   - id: fetch
-    name: gcr.io/cloud-builders/gsutil@sha256:7beb8a154fc771f6cb0827962374458ac99826a374895217aa838c2b7bcba2f3
+    name: gcr.io/cloud-builders/gsutil@sha256:d37e5c1e42dc8f70c10da24348738af07b7b8bf2d5c2ed5884103cfea7eee293
     waitFor:
       - '-'
 
