@@ -1,9 +1,9 @@
 steps:
-  - name: gcr.io/cloud-builders/docker@sha256:b1f24c6cc81385bbf1f3d159bae96150f49fa4dca1f3f14df4411528060b33b5
+  - name: gcr.io/cloud-builders/docker@sha256:94f55360d8295f7cbe77a13b7e26506211ada25486b25099a9127645cbd17219
     args:
       - pull
 
-  - name: gcr.io/cloud-builders/docker@sha256:b1f24c6cc81385bbf1f3d159bae96150f49fa4dca1f3f14df4411528060b33b5
+  - name: gcr.io/cloud-builders/docker@sha256:94f55360d8295f7cbe77a13b7e26506211ada25486b25099a9127645cbd17219
     args:
       - build
 
