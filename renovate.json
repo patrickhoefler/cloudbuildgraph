@@ -1,12 +1,12 @@
 {
   "extends": [
-    "config:base",
-    "docker:pinDigests",
-    "helpers:pinGitHubActionDigests"
+    "config:best-practices"
   ],
   "automerge": true,
   "dependencyDashboard": false,
-  "ignorePaths": ["**/example/**"],
+  "ignorePaths": [
+    "**/example/**"
+  ],
   "major": {
     "automerge": false
   },

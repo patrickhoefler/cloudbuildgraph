@@ -1,6 +1,6 @@
 module github.com/patrickhoefler/cloudbuildgraph
 
-go 1.19
+go 1.22.3
 
 require (
 	github.com/awalterschulze/gographviz v2.0.3+incompatible
@@ -9,4 +9,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1
 )
 
-require golang.org/x/text v0.14.0 // indirect
+require golang.org/x/text v0.15.0 // indirect
