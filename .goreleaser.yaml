@@ -1,3 +1,5 @@
+version: 2
+
 builds:
   - env:
       - CGO_ENABLED=0
@@ -19,7 +21,7 @@ dockers:
       - 'ghcr.io/patrickhoefler/cloudbuildgraph:{{ .Major }}.{{ .Minor }}.{{ .Patch }}'
 
 brews:
-  - tap:
+  - repository:
       owner: patrickhoefler
       name: homebrew-tap
 
