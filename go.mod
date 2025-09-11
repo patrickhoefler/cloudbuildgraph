@@ -2,7 +2,7 @@ module github.com/patrickhoefler/cloudbuildgraph
 
 go 1.23.0
 
-toolchain go1.24.6
+toolchain go1.25.1
 
 require (
 	github.com/awalterschulze/gographviz v2.0.3+incompatible
